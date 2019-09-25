@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MobileClassifierDemo.Views.CustomVisionView"
+             Title="Image Classifier">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Button Text="Take a photo!" 
+                    Margin="5"
+                    Command="{Binding TakePhotoCommand}" 
+                    WidthRequest="400" 
+                    HorizontalOptions="CenterAndExpand"
+                    BackgroundColor="Black" 
+                    TextColor="White"/>
+
+            <Image x:Name="PhotoImage" 
+                   Margin="5"
+                   Source="{Binding PhotoStream}"
+                   WidthRequest="400" 
+                   HeightRequest="400" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Aspect="AspectFit" />
+
+            <Button Text="Classify the image! (Local)" 
+                    Margin="10" 
+                    Command="{Binding ClassifyPhotoLocalCommand}"
+                    WidthRequest="400" 
+                    HorizontalOptions="CenterAndExpand" 
+                    BackgroundColor="Black" 
+                    TextColor="White"/>
+
+            <!--<Button Text="Classify the image! (API)" 
+                    Margin="10" 
+                    Command="{Binding ClassifyPhotoAPICommand}"
+                    WidthRequest="200" 
+                    HorizontalOptions="CenterAndExpand" 
+                    BackgroundColor="Black" 
+                    TextColor="White"/>-->
+
+            <ActivityIndicator IsVisible="{Binding IsBusy}" 
+                               IsRunning="{Binding IsBusy}" 
+                               IsEnabled="{Binding IsBusy}"/>
+
+            <Label Margin="5" 
+                   Text="{Binding ClassificationResult}"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="Large"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
